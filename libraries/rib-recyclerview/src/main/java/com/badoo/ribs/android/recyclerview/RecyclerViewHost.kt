@@ -14,14 +14,17 @@ import kotlinx.android.parcel.Parcelize
 @ExperimentalApi
 interface RecyclerViewHost<T : Parcelable>: Rib, Connectable<Input<T>, Nothing> {
 
-    @ExperimentalApi
-    interface Dependency<T : Parcelable> {
+    interface BaseDependency<T : Parcelable> {
         fun hostingStrategy(): HostingStrategy
         fun initialElements(): List<T>
         fun resolver(): RoutingResolver<T>
+        fun viewHolderLayoutParams(): FrameLayout.LayoutParams
+    }
+
+
+    interface Dependency<T : Parcelable> : BaseDependency<T> {
         fun recyclerViewFactory(): RecyclerViewFactory
         fun layoutManagerFactory(): LayoutManagerFactory
-        fun viewHolderLayoutParams(): FrameLayout.LayoutParams
     }
 
     @ExperimentalApi
@@ -44,6 +47,7 @@ interface RecyclerViewHost<T : Parcelable>: Rib, Connectable<Input<T>, Nothing> 
         data class Add<T : Parcelable>(val element: T): Input<T>()
     }
 }
+
 
 typealias RecyclerViewFactory = (Context) -> RecyclerView
 

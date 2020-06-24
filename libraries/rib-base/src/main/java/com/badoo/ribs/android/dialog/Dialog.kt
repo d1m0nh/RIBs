@@ -1,5 +1,6 @@
 package com.badoo.ribs.android.dialog
 
+import androidx.annotation.DrawableRes
 import com.badoo.ribs.android.dialog.Dialog.CancellationPolicy.NonCancellable
 import com.badoo.ribs.android.text.Text
 import com.badoo.ribs.core.Rib
@@ -14,6 +15,8 @@ abstract class Dialog<T : Any> private constructor(
 ) : ObservableSource<T> by events {
     var title: Text? = null
     var message: Text? = null
+    @DrawableRes
+    var background: Int? = null
     var cancellationPolicy: CancellationPolicy<T> = NonCancellable()
     var buttons: ButtonsConfig<T>? = null
     private var ribFactory: RibFactory? = null

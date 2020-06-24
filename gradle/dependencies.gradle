@@ -26,6 +26,7 @@ def versions = [
     androidxRecyclerViewVersion:'1.1.0', // https://developer.android.com/jetpack/androidx/releases/recyclerview
     androidxTestVersion:'1.1.0', // https://developer.android.com/jetpack/androidx/releases/test
     androidxTestUiAutoVersion:'2.2.0',
+    androidxViewPager2Version:'1.0.0',
     retrofitVersion: '2.8.1',
     okhttp: '3.14.7',
     leakCanary: '2.4'
@@ -73,7 +74,9 @@ def android = [
     percent: "androidx.percentlayout:percentlayout:${versions.androidxPercentLayoutVersion}",
     runner: "androidx.test:runner:${versions.androidxTestVersion}",
     recyclerView: "androidx.recyclerview:recyclerview:${versions.androidxRecyclerViewVersion}",
-    rules: "androidx.test:rules:${versions.androidxTestVersion}"
+    rules: "androidx.test:rules:${versions.androidxTestVersion}",
+    viewpager2: "androidx.viewpager2:viewpager2:${versions.androidxViewPager2Version}",
+
 ]
 
 def compose = [

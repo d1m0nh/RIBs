@@ -144,6 +144,10 @@ abstract class RibActivity : AppCompatActivity(), DialogLauncher {
 
     override fun show(dialog: Dialog<*>, onClose: () -> Unit) {
         dialogs[dialog] = dialog.toAlertDialog(this, onClose).also {
+            dialog.background?.apply {
+                it.window?.setBackgroundDrawableResource(this)
+            }
+
             it.show()
         }
     }

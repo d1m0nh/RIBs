@@ -18,6 +18,7 @@ dependencies {
 
     implementation deps.apt.javaxInject
 
+    implementation deps.android.viewpager2
     implementation deps.android.recyclerView
     implementation deps.android.lifecycleCommon
     compileOnly deps.android.annotations
