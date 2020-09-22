@@ -1,9 +1,9 @@
 package com.badoo.ribs.android.viewpager
 
-import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
 import com.badoo.ribs.android.recyclerview.Adapter
 import com.badoo.ribs.android.viewpager.ViewPagerHostView.Dependency
+import com.badoo.ribs.core.view.AndroidRibView
 import com.badoo.ribs.core.view.RibView
 import com.badoo.ribs.core.view.ViewFactory
 
@@ -20,10 +20,11 @@ internal interface ViewPagerHostView : RibView {
 
 internal class ViewPagerHostViewImpl private constructor(
     override val androidView: ViewPager2
-) : ViewPagerHostView {
+) : AndroidRibView(),
+    ViewPagerHostView {
 
     class Factory: ViewPagerHostView.Factory {
-        override fun invoke(deps: Dependency): (ViewGroup) -> ViewPagerHostView = {
+        override fun invoke(deps: Dependency): (RibView) -> ViewPagerHostView = {
             ViewPagerHostViewImpl(
                 androidView = deps.viewPagerFactory().invoke(it.context).apply {
                     adapter = deps.adapter()

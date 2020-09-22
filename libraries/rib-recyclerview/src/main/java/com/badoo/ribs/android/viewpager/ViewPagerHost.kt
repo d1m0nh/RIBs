@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Parcelable
 import androidx.viewpager2.widget.ViewPager2
 import com.badoo.ribs.android.recyclerview.RecyclerViewHost
-import com.badoo.ribs.core.Rib
 
 /**
  * Considered experimental. Handle with care.
