@@ -14,6 +14,7 @@ interface Portal : Rib {
     interface OtherSide {
         fun showContent(remoteNode: Node<*>, remoteConfiguration: Parcelable)
         fun showOverlay(remoteNode: Node<*>, remoteConfiguration: Parcelable)
+        fun popBackStack()
 
         companion object {
             /**
@@ -22,6 +23,7 @@ interface Portal : Rib {
             val NOOP = object : OtherSide {
                 override fun showContent(remoteNode: Node<*>, remoteConfiguration: Parcelable) {}
                 override fun showOverlay(remoteNode: Node<*>, remoteConfiguration: Parcelable) {}
+                override fun popBackStack() {}
             }
         }
     }

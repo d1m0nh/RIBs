@@ -12,7 +12,7 @@ import com.badoo.ribs.android.permissionrequester.PermissionRequester
 import com.badoo.ribs.android.recyclerview.RecyclerViewHost.HostingStrategy
 import com.badoo.ribs.android.recyclerview.RecyclerViewHost.HostingStrategy.EAGER
 import com.badoo.ribs.android.recyclerview.RecyclerViewHost.Input
-import com.badoo.ribs.android.recyclerview.routing.action.AddToRecyclerViewRoutingAction.Companion.recyclerView
+import com.badoo.ribs.android.recyclerview.routing.resolution.RecyclerViewItemResolution.Companion.recyclerView
 import com.badoo.ribs.android.viewpager.ViewPagerFactory
 import com.badoo.ribs.android.viewpager.ViewPagerHost
 import com.badoo.ribs.android.viewpager.ViewPagerHostBuilder
@@ -21,7 +21,7 @@ import com.badoo.ribs.core.Rib
 import com.badoo.ribs.core.modality.BuildContext
 import com.badoo.ribs.portal.Portal
 import com.badoo.ribs.routing.Routing
-import com.badoo.ribs.routing.action.RoutingAction
+import com.badoo.ribs.routing.resolution.Resolution
 import com.badoo.ribs.routing.resolver.RoutingResolver
 import com.badoo.ribs.sandbox.R
 import com.badoo.ribs.sandbox.rib.foo_bar.FooBar
@@ -32,7 +32,6 @@ import com.badoo.ribs.sandbox.rib.switcher.Switcher
 import com.badoo.ribs.sandbox.rib.switcher.SwitcherBuilder
 import com.badoo.ribs.sandbox.util.CoffeeMachine
 import com.badoo.ribs.sandbox.util.StupidCoffeeMachine
-import io.reactivex.Observable
 import kotlinx.android.parcel.Parcelize
 
 /** The sample app's single activity */
@@ -82,7 +81,7 @@ class ViewPagerTestActivity : RibActivity() {
     )
 
     private val ribResolver = object : RoutingResolver<Item> {
-        override fun resolve(routing: Routing<Item>): RoutingAction =
+        override fun resolve(routing: Routing<Item>): Resolution =
                 when (routing.configuration) {
                     Item.LoremIpsumItem -> recyclerView { loremIpsumBuilder.build(it) }
                     Item.FooBarItem -> recyclerView { fooBarBuilder.build(it) }

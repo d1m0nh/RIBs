@@ -8,6 +8,7 @@ import com.badoo.ribs.portal.PortalRouter.Configuration
 import com.badoo.ribs.portal.PortalRouter.Configuration.Content
 import com.badoo.ribs.portal.PortalRouter.Configuration.Overlay
 import com.badoo.ribs.routing.Routing
+import com.badoo.ribs.routing.source.backstack.operation.pop
 import com.badoo.ribs.routing.source.backstack.operation.push
 import com.badoo.ribs.routing.source.backstack.operation.pushOverlay
 
@@ -24,5 +25,9 @@ class PortalInteractor(
 
     override fun showOverlay(remoteNode: Node<*>, remoteConfiguration: Parcelable) {
         backStack.pushOverlay(Overlay.Portal(remoteNode.ancestryInfo.routingChain + Routing(remoteConfiguration)))
+    }
+
+    override fun popBackStack() {
+        backStack.popBackStack()
     }
 }
