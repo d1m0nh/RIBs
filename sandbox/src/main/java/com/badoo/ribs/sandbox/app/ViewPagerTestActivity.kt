@@ -66,6 +66,10 @@ class ViewPagerTestActivity : RibActivity() {
         override fun showOverlay(remoteNode: Node<*>, remoteConfiguration: Parcelable) {
             // Sorry, no-op
         }
+
+        override fun popBackStack() {
+            // Sorry, no-op
+        }
     }
 
     private val switcherBuilder = SwitcherBuilder(

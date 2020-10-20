@@ -66,6 +66,10 @@ class RecyclerViewTestActivity : RibActivity() {
         override fun showOverlay(remoteNode: Node<*>, remoteConfiguration: Parcelable) {
             // Sorry, no-op
         }
+
+        override fun popBackStack() {
+            // Sorry, no-op
+        }
     }
 
     private val switcherBuilder =
@@ -90,7 +94,8 @@ class RecyclerViewTestActivity : RibActivity() {
     }
 
     private val initialElements = listOf<Item>(
-        Item.FooBarItem
+        Item.FooBarItem,
+        Item.LoremIpsumItem
     )
 
     private lateinit var recyclerViewHost: RecyclerViewHost<Item>
@@ -115,6 +120,6 @@ class RecyclerViewTestActivity : RibActivity() {
 
     override fun onResume() {
         super.onResume()
-        recyclerViewHost.input.accept(Add(Item.LoremIpsumItem))
+        recyclerViewHost.input.accept(Add(Item.Switcher))
     }
 }

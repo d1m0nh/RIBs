@@ -49,8 +49,12 @@ internal class Adapter<T : Parcelable>(
         when (state.lastCommand) {
             null -> { /* No-op when restored from TimeCapsule or genuinely empty state */ }
             is Input.Add -> {
-                addIfEager(state.items.last())
-                notifyItemInserted(state.items.lastIndex)
+                state.items.forEach {
+                    addIfEager(it)
+                }
+
+                notifyDataSetChanged()
+                //notifyItemInserted(state.items.lastIndex)
             }
         }
     }
